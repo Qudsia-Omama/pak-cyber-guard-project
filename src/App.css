@@ -1,2 +1,443 @@
-main {
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1e1b2e 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3b82f6, #7c3aed);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2563eb, #6d28d9);
+}
+
+/* Cyber Button Styles */
+.btn {
+  @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 transform;
+  background: linear-gradient(135deg, #3b82f6, #7c3aed);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn:hover {
+  @apply scale-105;
+  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.btn:active {
+  @apply scale-95;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #7c3aed);
+  color: white;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #374151, #4b5563);
+  color: white;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+/* Glowing Cards */
+.glow-card {
+  @apply bg-gray-900 bg-opacity-50 backdrop-blur-sm border border-gray-700 rounded-xl p-6;
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Input Styles */
+.form-input {
+  @apply w-full px-4 py-3 bg-gray-900 bg-opacity-50 border border-gray-600 rounded-lg text-white placeholder-gray-400;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  @apply outline-none border-blue-500;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.form-input.error {
+  @apply border-red-500;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+/* Navigation Styles */
+.nav-link {
+  @apply relative px-4 py-2 text-gray-300 transition-colors duration-300;
+}
+
+.nav-link:hover {
+  @apply text-blue-400;
+}
+
+.nav-link.active {
+  @apply text-blue-400;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #7c3aed);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Report Form Styles */
+.report-form {
+  @apply max-w-4xl mx-auto p-6;
+}
+
+.form-header {
+  @apply text-center mb-8;
+}
+
+.form-header h2 {
+  @apply text-3xl font-bold mb-4;
+  background: linear-gradient(135deg, #3b82f6, #7c3aed, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.progress-bar {
+  @apply w-full h-2 bg-gray-700 rounded-full mb-4 overflow-hidden;
+}
+
+.progress {
+  @apply h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-500;
+}
+
+.step-indicator {
+  @apply text-sm text-gray-400;
+}
+
+.crime-types-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6;
+}
+
+.crime-card {
+  @apply glow-card cursor-pointer transition-all duration-300;
+}
+
+.crime-card.selected {
+  @apply border-blue-500;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+}
+
+.crime-icon {
+  @apply text-4xl mb-3;
+}
+
+.crime-description {
+  @apply text-gray-400 text-sm;
+}
+
+.anonymous-toggle {
+  @apply flex justify-center mb-8;
+}
+
+.toggle-switch {
+  @apply relative inline-flex items-center cursor-pointer;
+}
+
+.toggle-switch input {
+  @apply sr-only;
+}
+
+.slider {
+  @apply w-12 h-6 bg-gray-600 rounded-full relative transition-colors duration-300;
+}
+
+.slider::before {
+  content: '';
+  @apply absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform duration-300;
+}
+
+.toggle-switch input:checked + .slider {
+  @apply bg-blue-600;
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* Alert Styles */
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 16px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 300px;
+}
+
+.alert.show {
+  transform: translateX(0);
+}
+
+.alert.success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+
+.alert.error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+}
+
+.alert-icon {
+  font-size: 20px;
+}
+
+/* Floating Animation */
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .crime-types-grid {
+    @apply grid-cols-1;
+  }
+  
+  .form-row {
+    @apply flex-col;
+  }
+}
+
+/* Form Group Styles */
+.form-group {
+  @apply mb-6;
+}
+
+.form-group label {
+  @apply block text-sm font-medium text-gray-300 mb-2;
+}
+
+.required {
+  @apply text-red-400;
+}
+
+.char-count {
+  @apply text-xs text-gray-500 mt-1;
+}
+
+.error-message {
+  @apply text-red-400 text-sm mt-1;
+}
+
+.form-row {
+  @apply flex gap-4;
+}
+
+.form-row .form-group {
+  @apply flex-1;
+}
+
+.step-content {
+  @apply mb-8;
+}
+
+.step-content h3 {
+  @apply text-2xl font-semibold mb-4 text-center;
+}
+
+.step-description {
+  @apply text-gray-400 text-center mb-6;
+}
+
+.form-actions {
+  @apply flex justify-between items-center pt-6 border-t border-gray-700;
+}
+
+.upload-zone {
+  @apply relative border-2 border-dashed border-gray-600 rounded-lg p-8 text-center transition-colors duration-300;
+}
+
+.upload-zone:hover {
+  @apply border-blue-500;
+}
+
+.upload-zone input[type="file"] {
+  @apply absolute inset-0 opacity-0 cursor-pointer;
+}
+
+.upload-label {
+  @apply cursor-pointer;
+}
+
+.upload-icon {
+  @apply text-4xl mb-4;
+}
+
+.upload-hint {
+  @apply text-sm text-gray-500;
+}
+
+.evidence-list {
+  @apply mt-6;
+}
+
+.evidence-item {
+  @apply flex justify-between items-center p-3 bg-gray-800 rounded-lg mb-2;
+}
+
+.file-info {
+  @apply flex items-center gap-2;
+}
+
+.file-name {
+  @apply font-medium;
+}
+
+.file-size {
+  @apply text-sm text-gray-400;
+}
+
+.remove-btn {
+  @apply text-red-400 hover:text-red-300 text-sm;
+}
+
+.review-section {
+  @apply space-y-6;
+}
+
+.review-card {
+  @apply glow-card;
+}
+
+.review-card h4 {
+  @apply text-lg font-semibold mb-4 text-blue-400;
+}
+
+.review-item {
+  @apply flex mb-3;
+}
+
+.review-item .label {
+  @apply text-gray-400 font-medium min-w-32;
+}
+
+.review-item .value {
+  @apply flex-1;
+}
+
+.review-item .value.description {
+  @apply text-sm leading-relaxed;
+}
+
+.consent-section {
+  @apply mt-8 p-4 bg-gray-800 rounded-lg;
+}
+
+.consent-checkbox {
+  @apply flex items-start gap-3 cursor-pointer;
+}
+
+.consent-checkbox input {
+  @apply sr-only;
+}
+
+.checkmark {
+  @apply w-5 h-5 border-2 border-gray-600 rounded flex-shrink-0 relative transition-colors duration-300;
+}
+
+.consent-checkbox input:checked + .checkmark {
+  @apply bg-blue-600 border-blue-600;
+}
+
+.consent-checkbox input:checked + .checkmark::after {
+  content: '✓';
+  @apply absolute inset-0 flex items-center justify-center text-white text-sm;
+}
+
+.success-step {
+  @apply text-center;
+}
+
+.success-icon {
+  @apply text-6xl mb-4;
+}
+
+.success-message {
+  @apply text-lg text-gray-300 mb-6;
+}
+
+.report-id {
+  @apply bg-gray-800 p-4 rounded-lg mb-6;
+}
+
+.next-steps {
+  @apply text-left bg-gray-800 p-6 rounded-lg mb-6;
+}
+
+.next-steps ul {
+  @apply list-disc list-inside space-y-2 text-gray-300;
+}
+
+.success-actions {
+  @apply flex justify-center;
+}
+
+.anonymous-notice {
+  @apply text-center p-6 bg-gray-800 rounded-lg;
+}
+
+.notice-icon {
+  @apply text-4xl mb-3;
 }

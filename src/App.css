@@ -249,6 +249,154 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+/* Upload Zone Styles */
+.upload-zone {
+  @apply border-2 border-dashed border-gray-600 rounded-lg p-8 text-center mb-6 transition-colors duration-300;
+}
+
+.upload-zone:hover {
+  @apply border-blue-500;
+}
+
+.upload-zone input[type="file"] {
+  @apply sr-only;
+}
+
+.upload-label {
+  @apply cursor-pointer block;
+}
+
+.upload-icon {
+  @apply text-4xl mb-4;
+}
+
+.upload-hint {
+  @apply text-sm text-gray-500;
+}
+
+.evidence-list {
+  @apply mt-6;
+}
+
+.evidence-item {
+  @apply flex justify-between items-center bg-gray-800 p-3 rounded-lg mb-2;
+}
+
+.file-info {
+  @apply flex items-center gap-2;
+}
+
+.file-name {
+  @apply font-medium;
+}
+
+.file-size {
+  @apply text-sm text-gray-400;
+}
+
+.remove-btn {
+  @apply text-red-400 hover:text-red-300 text-sm;
+}
+
+/* Review Section Styles */
+.review-section {
+  @apply space-y-6 mb-8;
+}
+
+.review-card {
+  @apply bg-gray-800 bg-opacity-50 rounded-lg p-6;
+}
+
+.review-card h4 {
+  @apply text-lg font-semibold mb-4 text-blue-400;
+}
+
+.review-item {
+  @apply flex justify-between items-start mb-3 pb-3 border-b border-gray-700 last:border-b-0;
+}
+
+.review-item .label {
+  @apply font-medium text-gray-300 min-w-24;
+}
+
+.review-item .value {
+  @apply text-gray-100 text-right flex-1;
+}
+
+.review-item .description {
+  @apply text-left;
+}
+
+.anonymous-notice {
+  @apply bg-blue-900 bg-opacity-30 border border-blue-500 rounded-lg p-6 text-center;
+}
+
+.notice-icon {
+  @apply text-4xl mb-3;
+}
+
+.consent-section {
+  @apply mt-8;
+}
+
+.consent-checkbox {
+  @apply flex items-start gap-3 cursor-pointer;
+}
+
+.consent-checkbox input[type="checkbox"] {
+  @apply sr-only;
+}
+
+.checkmark {
+  @apply w-5 h-5 bg-gray-700 border border-gray-600 rounded flex-shrink-0 relative;
+}
+
+.consent-checkbox input:checked + .checkmark {
+  @apply bg-blue-600 border-blue-600;
+}
+
+.consent-checkbox input:checked + .checkmark::after {
+  content: '✓';
+  @apply absolute inset-0 flex items-center justify-center text-white text-sm;
+}
+
+/* Success Step Styles */
+.success-step {
+  @apply text-center;
+}
+
+.success-icon {
+  @apply text-6xl mb-6;
+}
+
+.success-message {
+  @apply text-lg text-gray-300 mb-8;
+}
+
+.report-id {
+  @apply bg-green-900 bg-opacity-30 border border-green-500 rounded-lg p-6 mb-8;
+}
+
+.next-steps {
+  @apply text-left mb-8 bg-gray-800 bg-opacity-50 rounded-lg p-6;
+}
+
+.next-steps h4 {
+  @apply text-lg font-semibold mb-4 text-center;
+}
+
+.next-steps ul {
+  @apply space-y-2;
+}
+
+.next-steps li {
+  @apply text-gray-300;
+}
+
+.success-actions {
+  @apply flex justify-center;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .crime-types-grid {
@@ -257,6 +405,14 @@ body {
   
   .form-row {
     @apply flex-col;
+  }
+  
+  .review-item {
+    @apply flex-col items-start gap-2;
+  }
+  
+  .review-item .value {
+    @apply text-left;
   }
 }
 
